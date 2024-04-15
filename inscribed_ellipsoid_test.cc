@@ -81,12 +81,16 @@ int main()
   assert(is_bounded);
 
 
-  drake::log()->info("A: {}", A);
-  drake::log()->info("b: {}", b);
+  drake::log()->info("A: \n{}", A);
+  drake::log()->info("b: \n{}", b);
+
+  auto chebyshev_center = polytope.ChebyshevCenter();
+
+  drake::log()->info("Chebyshev center: \n{}", chebyshev_center.transpose());
 
   auto maximum_ellipsoid = polytope.MaximumVolumeInscribedEllipsoid();
 
-  drake::log()->info("Reduced polytope ellipsoid center: {}", maximum_ellipsoid.center().transpose());
+  drake::log()->info("polytope ellipsoid center: \n{}", maximum_ellipsoid.center().transpose());
 
   return 0;
 }
